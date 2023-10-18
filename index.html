@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Send Friend Request</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	html,
+	body {
+		height: 100%;
+		width: 100%;
+	}
+
+	body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: grey;
+	}
+
+	#card {
+		height: 520px;
+		width: 320px;
+		background-color: rgb(205, 200, 200);
+		padding: 30px;
+		text-align: center;
+	}
+
+	#card img {
+		height: 50%;
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
+		border-radius: 15px;
+	}
+
+	#card h1 {
+		font-size: 25px;
+		max-width: 10px 0;
+	}
+
+	#card h5 {
+		font-size: 25px;
+		color: red;
+		margin: 20px;
+	}
+
+	#prev {
+		background-color: purple !important;
+	}
+
+	#next {
+		background-color: skyblue !important;
+	}
+
+	#card button {
+		color: white;
+		background-color: cadetblue;
+		font-weight: 700;
+		padding: 12px 20px;
+		border-radius: 50px;
+		border: none;
+		margin: 5px;
+		cursor: pointer;
+	}
+
+	#card #remove {
+		background-color: #dadada;
+		color: black;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="card">
+		<img id="img1" src="https://images.pexels.com/photos/1308881/pexels-photo-1308881.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+		<img id="img2" style="display: none;" src="https://images.pexels.com/photos/144474/pexels-photo-144474.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+		<h1>Angle Priya</h1>
+		<h5 id="strangerH">Stranger</h5>
+		<div id="btnContainer">
+			<button id="add">Add Friend</button>
+			<button id="prev">Previous Image</button>
+			<button id="next">Next Image</button>
+		</div>
+	</div>
+	<script>
+	let add = document.getElementById("add")
+	let strangerH = document.getElementById("strangerH")
+	var check = 0
+	let img1 = document.getElementById("img1")
+	let img2 = document.getElementById("img2")
+	let prev = document.getElementById("prev")
+	let next = document.getElementById("next")
+	add.addEventListener("click", (e) => {
+		if(check === 0) {
+			strangerH.innerHTML = ` Friends `
+			strangerH.style.color = "green"
+			add.innerHTML = `Remove Friends`
+			add.style.backgroundColor = "grey"
+			check = 1
+		} else {
+			strangerH.innerHTML = ` Stranger `
+			strangerH.style.color = "red"
+			add.innerHTML = `Add Friend`
+			add.style.backgroundColor = "cadetblue"
+			check = 0
+		}
+	})
+	prev.addEventListener("click", () => {
+		img2.style.display = "none"
+		img1.style.display = "block"
+	})
+	next.addEventListener("click", () => {
+		img1.style.display = "none"
+		img2.style.display = "block"
+	})
+	</script>
+</body>
+
+</html>
